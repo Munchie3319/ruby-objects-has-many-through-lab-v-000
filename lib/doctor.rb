@@ -21,7 +21,7 @@ class Doctor
      Appointment.all.select {|item| item.doctor == self}
    end
 
-    def patients 
+    def patients
      patient_list = []
      self.appointments.each {|item| patient_list << item.patient}
      patient_list
