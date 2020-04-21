@@ -1,20 +1,30 @@
-class Patient
-   attr_accessor :name
+class Patient 
+
+    attr_accessor :name 
+
+    @@all = [ ]
 
     def initialize(name)
      @name = name
+     @@all << self
+   end
 
-    end
+    def self.all
+     @@all
+   end
 
     def new_appointment(doctor, date)
-     Appointment.new(self, doctor, date)
+     Appointment.new(date, self, doctor)
+     #binding.pry
    end
 
     def appointments
-     Appointment.all.select {|appointment| appointment.patient == self}
+     Appointment.all.select {|item| item.patient == self }
    end
 
     def doctors
-     appointments.map{|appointment| appointment.doctor}
+     doctor_list = []
+     self.appointments.each {|item| doctor_list << item.doctor}
+     doctor_list
    end
- end
+ end 
