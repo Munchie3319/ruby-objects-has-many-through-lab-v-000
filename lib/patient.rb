@@ -24,5 +24,5 @@ class Patient
          appointments.collect {|a| a.doctor}
      end
 
- 
+
   end
