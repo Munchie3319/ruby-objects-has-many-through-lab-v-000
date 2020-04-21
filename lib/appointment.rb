@@ -23,6 +23,6 @@ class Appointment
      @doctor
    end
 
- 
- 
+
+
   end
