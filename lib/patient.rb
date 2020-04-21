@@ -1,8 +1,7 @@
 class Patient
 
-    attr_accessor :name
-
-    @@all = [ ]
+    attr_accessor :name, :appointment, :doctor
+   @@all = []
 
     def initialize(name)
      @name = name
@@ -13,18 +12,16 @@ class Patient
      @@all
    end
 
-    def new_appointment(doctor, date)
-     Appointment.new(date, self, doctor)
-     #binding.pry
-   end
-
     def appointments
-     Appointment.all.select {|item| item.patient == self }
+     Appointment.all.select {|appointment| appointment.patient == self}
    end
 
     def doctors
-     doctor_list = []
-     self.appointments.each {|item| doctor_list << item.doctor}
-     doctor_list
+     appointments.collect {|appointment| appointment.doctor}
    end
- end 
+
+    def new_appointment(doctor, date)
+     Appointment.new(self, date, doctor)
+   end
+
+  end 
