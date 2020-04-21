@@ -18,12 +18,12 @@ class Doctor
     Appointment.new(date, patient, self)
  end
 
- 
+
   def appointments
    Appointment.all.select {|apt| apt.doctor == self}
  end
 
- 
+
   def patients
    #binding.pry
    appointments.each do |apt|
